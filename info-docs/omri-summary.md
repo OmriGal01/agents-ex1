@@ -19,34 +19,3 @@ Outside of tech, Omri is driven by a love for building and creating from scratch
 בקיץ 2026 עבד עומרי כמתמחה פיתוח כלי AI (AI Tools Developer Intern) בחברת Mad Brain Games, שם תכנן והטמיע סוכן AI מודולרי ב-Python למודיעין תחרותי, הכולל ממשקי CLI ו-FastAPI, מתאמי LLM מתחלפים (OpenRouter, OpenAI SDK), צינורות איסוף מידע אסינכרוניים (מול Google Play, App Store, Reddit ו-Microsoft Graph APIs) עם אימות נתונים קפדני ב-Pydantic, והפצת דוחות אוטומטית דרך אתר ייעודי ו-Webhooks בטלגרם. האתגר הטכני האהוב עליו בהתמחות היה בניית הסוכן כך שלא רק יפיק דוחות מוגדרים מראש, אלא יתבסס על ארכיטקטורת תוספים (Skill Plugin Architecture) פשוטה, נקייה וסקיילבילית. בנוסף, עומרי פיתח פרויקט אישי לניהול רשימת קניות מבוסס AI (AI-Powered Grocery List Manager) – בוט טלגרם Cloud-Native הבנוי בארכיטקטורת Command Pattern עם שרת MCP, בקאנד ב-FastAPI ומסד נתונים PostgreSQL על גבי Google Cloud Run. ארגז הכלים הטכנולוגי שלו כולל את השפות Python, C#, Java, C ו-SQL, לצד FastAPI, .NET, Docker, Linux, Git ו-GCP.
 
 מחוץ לעולם הקוד, עומרי מונע מאהבה ליצירה ולבנייה מאפס – תפיסה שמחברת בעיניו ישירות בין הנדסת תוכנה לתחביבו המרכזי: נגרות. בנגרות הוא אוהב לבנות רהיטים פונקציונליים, ולאחרונה בנה שולחן פוקר בגודל מלא ל-10 שחקנים, לצד מספר שולחנות נוספים, ארון, מיטה ושידות לילה. עומרי דובר עברית כשפת אם ואנגלית ברמת שפת אם.
-
----
-
-# CV - Omri Gal
-
-Omri Gal
-+972 54 277 8533 | Herzliya | [omri.gal01@gmail.com](mailto:omri.gal01@gmail.com) | [linkedin.com/in/omri-gal01](https://www.linkedin.com/in/omri-gal01/)
-Education
-2024-Present | Third-year Computer Science student, Reichman University
-Accelerated B.Sc./M.Sc. program – Expected graduation March 2029 (available 3 days a week)
-· GPA 99 | Dean’s List – ranked 1st in class | Honors program
-· Data Structures 100 | Algorithms 97 | Operating Systems 96 | OOP with C# and .NET 96
-· Participation in FinTech and TechTalk clubs
-Experience
-Summer 2026 | AI Tools Developer Intern, Mad Brain Games
-· Architected and deployed a modular Python competitive-intelligence AI agent featuring CLI and FastAPI interfaces, a dynamic skill registry, and pluggable LLM adapters (OpenRouter, OpenAI SDK).
-· Engineered asynchronous data collection pipelines and reporting workflows integrating Google Play, App Store, Reddit, and Microsoft Graph APIs with strict Pydantic validation.
-· Automated end-to-end report delivery via dedicated website and Telegram webhooks , streamlining market research workflows for the product team.
-Projects and Skills
-AI-Powered Grocery List Manager – Cloud-native Telegram bot using a FastAPI backend and Cloud SQL (PostgreSQL) deployed on Google Cloud Run, utilizing MCP server for natural language requests. Built with command pattern architecture | [github.com/OmriGal01/AI-Grocery-List-Manager](https://github.com/OmriGal01/AI-Grocery-List-Manager)
-· Programming languages: Python, C#, Java, C, SQL
-· Frameworks & Libraries: FastAPI, .NET, OpenAI SDK
-· Cloud, Databases & Tools: GCP (Cloud Run, Cloud SQL), PostgreSQL, Docker, Linux, Git
-Military Service
-2018-2024 | Field Intelligence Officer – Combat service as a Battalion Intelligence Officer and Research Officer in the Northern Command | Released with rank of Captain
-2022-2024 | Head of Operational Research Team for the Northern Comd Intelligence during “Iron Swords”
-o Collaborated cross-functionally with Unit 8200 to establish a new information processing unit, resulting in innovation distinction from Chief of Aman (Intelligence Division)
-o Defined information processing systems handling big-data analysis used by ground troops during operation “Northern Arrows” | Authored and published the Northern Comd intel handbook
-2020-2022 | Field Intelligence Officer for Battalions 202, Paratroopers and 196, Brigade 460 | Distinction from Brigade Commander
-Other - Volunteer Calculus tutor to first year students | Hobbyist woodworker
-Languages - Hebrew – Native | English – Near native fluency

@@ -1,40 +1,30 @@
 from pathlib import Path
-from pypdf import PdfReader
 
 from config import INFO_DOCS_PATH, PROMPTS_PATH
 
 SUPPORTED_TEXT_EXTENSIONS = {".md", ".txt"}
-SUPPORTED_PDF_EXTENSIONS = {".pdf"}
 DEFAULT_SYSTEM_PROMPT_FILE = PROMPTS_PATH / "system-prompt.md"
 
 
 def read_document(file_path: Path) -> str:
-    """Read text content from a markdown, text, or PDF file."""
+    """Read text content from a markdown or text file."""
     suffix = file_path.suffix.lower()
 
     if suffix in SUPPORTED_TEXT_EXTENSIONS:
         return file_path.read_text(encoding="utf-8").strip()
 
-    if suffix in SUPPORTED_PDF_EXTENSIONS:
-        reader = PdfReader(str(file_path))
-        pages_text = [
-            page.extract_text() or "" for page in reader.pages
-        ]
-        return "\n".join(pages_text).strip()
-
     raise ValueError(f"Unsupported file extension: {file_path.suffix}")
 
 
 def load_background_docs(info_docs_dir: Path = INFO_DOCS_PATH) -> str:
-    """Load and concatenate all supported background documents from info_docs_dir."""
+    """Load and concatenate all markdown/text background documents from info_docs_dir."""
     if not info_docs_dir.exists() or not info_docs_dir.is_dir():
         raise FileNotFoundError(f"Info docs directory not found: {info_docs_dir}")
 
-    supported_extensions = SUPPORTED_TEXT_EXTENSIONS | SUPPORTED_PDF_EXTENSIONS
     doc_sections: list[str] = []
 
     for file_path in sorted(info_docs_dir.iterdir()):
-        if file_path.is_file() and file_path.suffix.lower() in supported_extensions:
+        if file_path.is_file() and file_path.suffix.lower() in SUPPORTED_TEXT_EXTENSIONS:
             content = read_document(file_path)
             if content:
                 doc_sections.append(f"--- Document: {file_path.name} ---\n{content}")
@@ -64,4 +54,3 @@ if __name__ == "__main__":
 
     sys.stdout.reconfigure(encoding="utf-8")
     print(build_system_prompt())
-
