@@ -1,16 +1,25 @@
 from openai import OpenAI
 import gradio as gr
 
-from config import ACTOR_MODEL, GEMINI_API_KEY, GEMINI_BASE_URL
+from config import (
+    ACTOR_MODEL,
+    ACTOR_SYSTEM_PROMPT_FILE,
+    GEMINI_API_KEY,
+    GEMINI_BASE_URL,
+    INFO_DOCS_PATH,
+)
+from prompt_builder import build_prompt
 from styles import CSS, JS
-from system_prompt_builder import build_system_prompt
 
 client = OpenAI(
     api_key=GEMINI_API_KEY,
     base_url=GEMINI_BASE_URL,
 )
 
-SYSTEM_PROMPT = build_system_prompt()
+SYSTEM_PROMPT = build_prompt(
+    prompt_file=ACTOR_SYSTEM_PROMPT_FILE,
+    docs_dir=INFO_DOCS_PATH,
+)
 
 
 def _extract_text(content) -> str:

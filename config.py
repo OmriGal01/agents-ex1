@@ -7,6 +7,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 PROMPTS_PATH = BASE_DIR / "prompts"
 INFO_DOCS_PATH = BASE_DIR / "info-docs"
+ACTOR_SYSTEM_PROMPT_FILE = PROMPTS_PATH / "system-prompt.md"
+
 
 GEMINI_API_KEY = (os.getenv("GEMINI_API_KEY") or "").strip()
 GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
