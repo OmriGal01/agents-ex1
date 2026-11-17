@@ -1,0 +1,82 @@
+# Assignment file
+assignment.docx
+~$assignment.docx
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# PyCharm / JetBrains IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# mypy / Ruff / Pyright / Jupyter
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pyre/
+.pytype/
+.ipynb_checkpoints
+
+# Gradio
+.gradio/
+
+# OS generated files
+.DS_Store
+Thumbs.db
