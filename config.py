@@ -8,8 +8,15 @@ BASE_DIR = Path(__file__).resolve().parent
 PROMPTS_PATH = BASE_DIR / "prompts"
 INFO_DOCS_PATH = BASE_DIR / "info-docs"
 ACTOR_SYSTEM_PROMPT_FILE = PROMPTS_PATH / "system-prompt.md"
+ACTOR_REVISION_PROMPT_FILE = PROMPTS_PATH / "actor-revision-prompt.md"
 EVALUATOR_SYSTEM_PROMPT_FILE = PROMPTS_PATH / "evaluator-system-prompt.md"
 EVALUATOR_USER_PROMPT_FILE = PROMPTS_PATH / "evaluator-user-prompt.md"
+
+LOGS_PATH = BASE_DIR / "logs"
+EXECUTION_LOG_FILE = LOGS_PATH / "execution_log.json"
+
+MAX_ATTEMPTS = 3
+
 
 
 
