@@ -9,6 +9,8 @@ PROMPTS_PATH = BASE_DIR / "prompts"
 INFO_DOCS_PATH = BASE_DIR / "info-docs"
 ACTOR_SYSTEM_PROMPT_FILE = PROMPTS_PATH / "system-prompt.md"
 EVALUATOR_SYSTEM_PROMPT_FILE = PROMPTS_PATH / "evaluator-system-prompt.md"
+EVALUATOR_USER_PROMPT_FILE = PROMPTS_PATH / "evaluator-user-prompt.md"
+
 
 
 
