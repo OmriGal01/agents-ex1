@@ -38,7 +38,7 @@ class Actor:
         messages = [{"role": "system", "content": self.system_prompt}]
         messages += conversation_history or []
         messages.append({"role": "user", "content": user_question})
-        if rejected_answer and critic_feedback:
+        if rejected_answer is not None and critic_feedback is not None:
             revision_prompt = build_prompt(
                 self.revision_prompt_file,
                 rejected_answer=rejected_answer,
