@@ -2,25 +2,23 @@ from openai import OpenAI
 import gradio as gr
 
 from config import (
-    ACTOR_MODEL,
-    ACTOR_SYSTEM_PROMPT_FILE,
     GEMINI_API_KEY,
     GEMINI_BASE_URL,
-    INFO_DOCS_PATH,
 )
-from prompt_builder import build_prompt
 from styles import CSS, JS
+from orchestrator import ChatOrchestrator
+from actor import Actor
+from evaluator import Evaluator
 
 client = OpenAI(
     api_key=GEMINI_API_KEY,
     base_url=GEMINI_BASE_URL,
 )
 
-SYSTEM_PROMPT = build_prompt(
-    prompt_file=ACTOR_SYSTEM_PROMPT_FILE,
-    docs_dir=INFO_DOCS_PATH,
-)
 
+actor = Actor(client)
+evaluator = Evaluator(client)
+orchestrator = ChatOrchestrator(actor, evaluator)
 
 def _extract_text(content) -> str:
     """Extract plain text from a Gradio message content value."""
@@ -38,7 +36,7 @@ def _extract_text(content) -> str:
 
 
 def _normalize_history(history) -> list[dict[str, str]]:
-    """Normalize Gradio chat history into clean OpenAI-compatible role/content dicts."""
+    """Normalize Gradio chat history into OpenAI-compatible role/content dicts."""
     normalized: list[dict[str, str]] = []
     for entry in history or []:
         if isinstance(entry, dict):
@@ -57,14 +55,9 @@ def _normalize_history(history) -> list[dict[str, str]]:
 
 def chat(message, history):
     user_text = _extract_text(message)
-    messages = (
-        [{"role": "system", "content": SYSTEM_PROMPT}]
-        + _normalize_history(history)
-        + [{"role": "user", "content": user_text}]
-    )
-    response = client.chat.completions.create(model=ACTOR_MODEL, messages=messages)
+    normalized_history = _normalize_history(history)
 
-    return response.choices[0].message.content
+    return orchestrator.run(user_text, normalized_history)
 
 
 if __name__ == "__main__":
