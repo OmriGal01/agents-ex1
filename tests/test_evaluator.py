@@ -4,10 +4,7 @@ from pathlib import Path
 # Allow running directly as `python tests/test_evaluator.py`
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from openai import OpenAI
-
-from config import GEMINI_API_KEY, GEMINI_BASE_URL
-from evaluator import Evaluator
+from app import critic
 
 TEST_CASES = [
     {
@@ -86,16 +83,10 @@ TEST_CASES = [
 def run_evaluator_tests() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
 
-    client = OpenAI(
-        api_key=GEMINI_API_KEY,
-        base_url=GEMINI_BASE_URL,
-    )
-    evaluator = Evaluator(client=client)
-
     passed = 0
     for case in TEST_CASES:
         print(f"=== {case['name']} ===")
-        evaluation = evaluator.evaluate(
+        evaluation = critic.evaluate(
             user_question=case["question"],
             candidate_answer=case["candidate_answer"],
             conversation_history=case["history"],

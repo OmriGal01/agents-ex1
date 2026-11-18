@@ -1,24 +1,21 @@
-from openai import OpenAI
 import gradio as gr
+from openai import OpenAI
 
-from config import (
-    GEMINI_API_KEY,
-    GEMINI_BASE_URL,
-)
-from styles import CSS, JS
-from orchestrator import ChatOrchestrator
 from actor import Actor
+from config import GEMINI_API_KEY, GEMINI_BASE_URL
 from evaluator import Evaluator
+from orchestrator import ChatOrchestrator
+from styles import CSS, JS
 
 client = OpenAI(
     api_key=GEMINI_API_KEY,
     base_url=GEMINI_BASE_URL,
 )
 
-
 actor = Actor(client)
-evaluator = Evaluator(client)
-orchestrator = ChatOrchestrator(actor, evaluator)
+critic = Evaluator(client)
+orchestrator = ChatOrchestrator(actor, critic)
+
 
 def _extract_text(content) -> str:
     """Extract plain text from a Gradio message content value."""
@@ -56,7 +53,6 @@ def _normalize_history(history) -> list[dict[str, str]]:
 def chat(message, history):
     user_text = _extract_text(message)
     normalized_history = _normalize_history(history)
-
     return orchestrator.run(user_text, normalized_history)
 
 

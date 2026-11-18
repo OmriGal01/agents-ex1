@@ -1,0 +1,78 @@
+[
+  {
+    "scenario_id": "interactive",
+    "timestamp": "2026-11-18T19:16:37.324243+00:00",
+    "user_question": "What is this chat about?",
+    "final_status": "approved",
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "candidate_answer": "This chat is dedicated to answering questions about Omri Gal, a computer science student, software developer, and former military officer. You can ask about his education, professional experience, military service, projects, technical skills, and personal background as detailed in his profile.",
+        "evaluator_decision": "approved",
+        "feedback": "The candidate answer accurately describes the purpose of the chat and correctly represents Omri Gal in the third person. It is fully grounded in the system instructions and background documents without making unsupported claims."
+      }
+    ]
+  },
+  {
+    "scenario_id": "interactive",
+    "timestamp": "2026-11-18T19:17:43.048580+00:00",
+    "user_question": "What is Omri's highest grade?",
+    "final_status": "approved",
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "candidate_answer": "Based on Omri's academic record, his highest grade is **100**, which he received in **Data Structures**.",
+        "evaluator_decision": "approved",
+        "feedback": "The candidate answer accurately identifies Omri's highest grade (100 in Data Structures) directly from the background documents. The response properly uses the third-person perspective, addresses the user's question clearly, and maintains strict grounding without any hallucinations."
+      }
+    ]
+  },
+  {
+    "scenario_id": "interactive",
+    "timestamp": "2026-11-18T19:18:07.950150+00:00",
+    "user_question": "Is Omri a good student?",
+    "final_status": "approved",
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "candidate_answer": "Yes, Omri is an exceptional student. He is a Computer Science honors student at Reichman University with a remarkable GPA of **99**, ranking **1st in his class** and earning a spot on the Dean's List. He also excels in his core computer science courses, achieving top-tier grades such as:\n\n- **100** in Data Structures\n- **97** in Algorithms\n- **96** in Operating Systems\n- **96** in Object-Oriented Programming (OOP) with C# and .NET\n\nAdditionally, he is enrolled in an accelerated B.Sc./M.Sc. program and actively contributes to the academic community by volunteering as a Calculus tutor for first-year students and participating in the university's FinTech and TechTalk clubs.",
+        "evaluator_decision": "approved",
+        "feedback": "The candidate answer is fully grounded in the background documentation, accurately addressing whether Omri is a good student by referencing his GPA of 99, 1st class rank, Dean's List placement, honors status, accelerated B.Sc./M.Sc. program, and specific course grades. It maintains the required third-person persona, friendly and professional tone, and correct language matching."
+      }
+    ]
+  },
+  {
+    "scenario_id": "interactive",
+    "timestamp": "2026-11-18T19:18:41.750027+00:00",
+    "user_question": "What was my previous question?",
+    "final_status": "approved",
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "candidate_answer": "Your previous question was: \"What is Omri's highest grade?\"",
+        "evaluator_decision": "rejected",
+        "feedback": "The candidate response violates the third-person persona rule. The persona guidelines state that the agent must always speak about Omri Gal in the third person and never speak in the first person. By answering 'Your previous question was...', the candidate uses first-person pronouns/context ('Your' addressing the user, but implying a direct conversational reply rather than maintaining the AI representative persona referring to Omri). The candidate should phrase the response in the third person or as a neutral factual statement representing Omri's AI assistant (e.g., 'The user's previous question was...'). Please fix the persona violation."
+      },
+      {
+        "attempt_number": 2,
+        "candidate_answer": "The user's previous question was: \"What is Omri's highest grade?\"",
+        "evaluator_decision": "approved",
+        "feedback": "The candidate answer accurately addresses the user's meta-question by correctly identifying the preceding user question from the conversation history, maintains the third-person persona representing Omri Gal, uses proper grounding in the facts, and follows all style and language guidelines."
+      }
+    ]
+  },
+  {
+    "scenario_id": "interactive",
+    "timestamp": "2026-11-18T19:19:13.358668+00:00",
+    "user_question": "And what was your answer?",
+    "final_status": "approved",
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "candidate_answer": "The previous answer was: \"Based on Omri's academic record, his highest grade is **100**, which he received in **Data Structures**.\"",
+        "evaluator_decision": "approved",
+        "feedback": "The candidate response correctly recalls the previous answer from the conversation history, maintains the third-person persona, directly addresses the user's question, and is fully grounded in the provided context."
+      }
+    ]
+  }
+]

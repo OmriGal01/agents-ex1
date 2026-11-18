@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from openai import OpenAI
 
 from config import (
@@ -34,7 +35,6 @@ class Actor:
         rejected_answer: str | None = None,
         critic_feedback: str | None = None,
     ) -> list[dict[str, str]]:
-
         messages = [{"role": "system", "content": self.system_prompt}]
         messages += conversation_history or []
         messages.append({"role": "user", "content": user_question})
@@ -42,12 +42,11 @@ class Actor:
             revision_prompt = build_prompt(
                 self.revision_prompt_file,
                 rejected_answer=rejected_answer,
-                critic_feedback=critic_feedback
+                critic_feedback=critic_feedback,
             )
             messages.append({"role": "user", "content": revision_prompt})
 
         return messages
-
 
     def generate(
         self,
@@ -56,14 +55,16 @@ class Actor:
         rejected_answer: str | None = None,
         critic_feedback: str | None = None,
     ) -> str:
-
         messages = self._build_messages(
             user_question,
             conversation_history,
             rejected_answer,
-            critic_feedback
+            critic_feedback,
         )
-        response = self.client.chat.completions.create(model=self.model, messages=messages)
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+        )
         content = response.choices[0].message.content
 
         if not content:

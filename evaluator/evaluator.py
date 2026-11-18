@@ -1,10 +1,11 @@
 from pathlib import Path
+
 from openai import OpenAI
 
 from config import (
     CRITIC_MODEL,
-    EVALUATOR_SYSTEM_PROMPT_FILE,
-    EVALUATOR_USER_PROMPT_FILE,
+    CRITIC_SYSTEM_PROMPT_FILE,
+    CRITIC_USER_PROMPT_FILE,
     INFO_DOCS_PATH,
 )
 from evaluator.models import Evaluation
@@ -16,8 +17,8 @@ class Evaluator:
         self,
         client: OpenAI,
         model: str = CRITIC_MODEL,
-        system_prompt_file: Path = EVALUATOR_SYSTEM_PROMPT_FILE,
-        user_prompt_file: Path = EVALUATOR_USER_PROMPT_FILE,
+        system_prompt_file: Path = CRITIC_SYSTEM_PROMPT_FILE,
+        user_prompt_file: Path = CRITIC_USER_PROMPT_FILE,
         docs_dir: Path = INFO_DOCS_PATH,
     ) -> None:
         self.client = client
@@ -30,7 +31,7 @@ class Evaluator:
 
     @staticmethod
     def _format_history(
-        conversation_history: list[dict[str, str]] | None
+        conversation_history: list[dict[str, str]] | None,
     ) -> str:
         if not conversation_history:
             return "No prior conversation."
@@ -50,13 +51,12 @@ class Evaluator:
         candidate_answer: str,
         conversation_history: list[dict[str, str]] | None = None,
     ) -> Evaluation:
-
         conv_history_formatted = self._format_history(conversation_history)
         user_prompt = build_prompt(
             self.user_prompt_file,
             conversation_history=conv_history_formatted,
             user_question=user_question,
-            candidate_answer=candidate_answer
+            candidate_answer=candidate_answer,
         )
 
         response = self.client.beta.chat.completions.parse(
