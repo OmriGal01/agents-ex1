@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 820" width="1120" height="820" font-family="Segoe UI, Inter, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#9aa0aa"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4a85f6"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4caf50"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff9800"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f44336"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1120" height="820" fill="#1e1f22" rx="12"/>
+
+  <!-- Title -->
+  <text x="560" y="38" text-anchor="middle" fill="#dfe1e5" font-size="22" font-weight="700">Actor-Critic Career Chatbot — System Architecture</text>
+  <text x="560" y="60" text-anchor="middle" fill="#9397a1" font-size="13">Up to 3 generation-evaluation attempts per question with structured Pydantic validation &amp; JSON execution logging</text>
+
+  <!-- ==================== LEFT COLUMN: BACKGROUND SOURCES ==================== -->
+  <rect x="35" y="100" width="245" height="92" rx="8" fill="#263238" stroke="#607d8b" stroke-width="1.8"/>
+  <text x="157" y="128" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Background Sources</text>
+  <text x="157" y="149" text-anchor="middle" fill="#cfd8dc" font-size="12">info-docs/omri-summary.md</text>
+  <text x="157" y="167" text-anchor="middle" fill="#cfd8dc" font-size="12">info-docs/omri-linkedin-cv.md</text>
+
+  <rect x="35" y="232" width="245" height="68" rx="8" fill="#2b2d30" stroke="#607d8b" stroke-width="1.5"/>
+  <text x="157" y="259" text-anchor="middle" fill="#dfe1e5" font-size="14" font-weight="700">Prompt Builder</text>
+  <text x="157" y="279" text-anchor="middle" fill="#9397a1" font-size="12">prompt_builder.py (cached)</text>
+
+  <!-- Arrow: Docs -> Prompt Builder -->
+  <line x1="157" y1="192" x2="157" y2="232" stroke="#9aa0aa" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ==================== CENTER COLUMN: MAIN PIPELINE ==================== -->
+  <!-- Gradio Chat UI & History -->
+  <rect x="380" y="95" width="320" height="72" rx="8" fill="#1d3557" stroke="#3574f0" stroke-width="2"/>
+  <text x="540" y="124" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Gradio Chat UI &amp; History</text>
+  <text x="540" y="146" text-anchor="middle" fill="#c7d8ff" font-size="12">app.py — User Question + Displayed Chat History</text>
+
+  <!-- ChatOrchestrator -->
+  <rect x="380" y="205" width="320" height="62" rx="8" fill="#2b2d30" stroke="#3574f0" stroke-width="1.8"/>
+  <text x="540" y="231" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">ChatOrchestrator (orchestrator.py)</text>
+  <text x="540" y="251" text-anchor="middle" fill="#9397a1" font-size="12">Reset attempt = 1 (max_attempts = 3)</text>
+
+  <!-- Actor -->
+  <rect x="380" y="305" width="320" height="76" rx="8" fill="#2b2d30" stroke="#4a85f6" stroke-width="2"/>
+  <text x="540" y="331" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Actor (Generator)</text>
+  <text x="540" y="350" text-anchor="middle" fill="#c7d8ff" font-size="12">actor/actor.py (gemini-3.5-flash-lite)</text>
+  <text x="540" y="368" text-anchor="middle" fill="#9397a1" font-size="11.5">actor-system-prompt.md + actor-revision-prompt.md</text>
+
+  <!-- Critic -->
+  <rect x="380" y="420" width="320" height="76" rx="8" fill="#2b2d30" stroke="#4a85f6" stroke-width="2"/>
+  <text x="540" y="446" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Critic (Evaluator)</text>
+  <text x="540" y="465" text-anchor="middle" fill="#c7d8ff" font-size="12">evaluator/evaluator.py (gemini-3.5-flash-lite)</text>
+  <text x="540" y="483" text-anchor="middle" fill="#9397a1" font-size="11.5">critic-system-prompt.md + critic-user-prompt.md</text>
+
+  <!-- Structured Output Evaluation -->
+  <rect x="380" y="532" width="320" height="64" rx="8" fill="#26282c" stroke="#4a85f6" stroke-width="1.8"/>
+  <text x="540" y="557" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">Pydantic Evaluation (evaluator/models.py)</text>
+  <text x="540" y="578" text-anchor="middle" fill="#9dc0ff" font-size="12">is_acceptable: bool  |  feedback: str</text>
+
+  <!-- Decision Diamond: is_acceptable? -->
+  <polygon points="540,625 635,665 540,705 445,665" fill="#2b2d30" stroke="#4a85f6" stroke-width="2"/>
+  <text x="540" y="669" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">is_acceptable?</text>
+
+  <!-- Main Vertical Arrows -->
+  <line x1="540" y1="167" x2="540" y2="205" stroke="#4a85f6" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+  <line x1="540" y1="267" x2="540" y2="305" stroke="#4a85f6" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+  <line x1="540" y1="381" x2="540" y2="420" stroke="#4a85f6" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+  <text x="550" y="405" fill="#9397a1" font-size="11.5">Candidate draft</text>
+  <line x1="540" y1="496" x2="540" y2="532" stroke="#4a85f6" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+  <line x1="540" y1="596" x2="540" y2="625" stroke="#4a85f6" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+
+  <!-- Prompt Builder -> Actor & Critic -->
+  <path d="M 280 266 L 330 266 L 330 343 L 380 343" fill="none" stroke="#9aa0aa" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 330 343 L 330 458 L 380 458" fill="none" stroke="#9aa0aa" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="318" y="330" text-anchor="end" fill="#9397a1" font-size="11">Background docs</text>
+
+  <!-- ==================== FEEDBACK LOOP (LEFT SIDE) ==================== -->
+  <!-- Decision Diamond: attempt < 3? -->
+  <polygon points="215,625 305,665 215,705 125,665" fill="#2b2d30" stroke="#ff9800" stroke-width="2"/>
+  <text x="215" y="669" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">attempt &lt; 3?</text>
+
+  <!-- Arrow: is_acceptable == False -> attempt < 3? -->
+  <line x1="445" y1="665" x2="305" y2="665" stroke="#ff9800" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="375" y="655" text-anchor="middle" fill="#ffb74d" font-size="12" font-weight="700">No (False)</text>
+
+  <!-- FEEDBACK LOOP EDGE returning to Actor -->
+  <path d="M 215 625 L 215 360 L 380 360" fill="none" stroke="#ff9800" stroke-width="2.4" stroke-dasharray="6,4" marker-end="url(#arrow-orange)"/>
+  <rect x="60" y="452" width="146" height="74" rx="6" fill="#2d2416" stroke="#ff9800" stroke-width="1.4"/>
+  <text x="133" y="472" text-anchor="middle" fill="#ffb74d" font-size="12" font-weight="700">Feedback Loop</text>
+  <text x="133" y="489" text-anchor="middle" fill="#ffe0b2" font-size="11">Yes (attempt += 1)</text>
+  <text x="133" y="504" text-anchor="middle" fill="#ffe0b2" font-size="11">Rejected draft +</text>
+  <text x="133" y="518" text-anchor="middle" fill="#ffe0b2" font-size="11">Critic feedback -&gt; Actor</text>
+
+  <!-- ==================== THREE EXPLICIT EXIT PATHS ==================== -->
+  <!-- EXIT 1: Approved (Right bottom) -->
+  <rect x="780" y="620" width="305" height="86" rx="8" fill="#1b3a1e" stroke="#4caf50" stroke-width="2"/>
+  <text x="932" y="646" text-anchor="middle" fill="#81c784" font-size="14" font-weight="700">EXIT 1: Approved</text>
+  <text x="932" y="666" text-anchor="middle" fill="#e8f5e9" font-size="12">final_status = "approved"</text>
+  <text x="932" y="685" text-anchor="middle" fill="#c8e6c9" font-size="11.5">Return approved answer to Gradio UI &amp; history</text>
+
+  <line x1="635" y1="665" x2="780" y2="665" stroke="#4caf50" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+  <text x="707" y="655" text-anchor="middle" fill="#81c784" font-size="12" font-weight="700">Yes (True)</text>
+
+  <!-- EXIT 2: Max Attempts Exceeded (Bottom left) -->
+  <rect x="65" y="732" width="300" height="72" rx="8" fill="#462d0b" stroke="#ff9800" stroke-width="2"/>
+  <text x="215" y="756" text-anchor="middle" fill="#ffb74d" font-size="14" font-weight="700">EXIT 2: Max Attempts Exceeded</text>
+  <text x="215" y="775" text-anchor="middle" fill="#ffe0b2" font-size="12">final_status = "max_attempts_exceeded"</text>
+  <text x="215" y="793" text-anchor="middle" fill="#ffe0b2" font-size="11">Show limit notice (never show rejected draft)</text>
+
+  <line x1="215" y1="705" x2="215" y2="732" stroke="#ff9800" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="255" y="722" fill="#ffb74d" font-size="11.5" font-weight="700">No (== 3)</text>
+
+  <!-- EXIT 3: Technical Error (Right middle) -->
+  <rect x="780" y="388" width="305" height="92" rx="8" fill="#4a1818" stroke="#f44336" stroke-width="2"/>
+  <text x="932" y="413" text-anchor="middle" fill="#ef9a9a" font-size="14" font-weight="700">EXIT 3: Technical Error</text>
+  <text x="932" y="433" text-anchor="middle" fill="#ffcdd2" font-size="11.5">evaluator_decision = "evaluation_not_completed"</text>
+  <text x="932" y="451" text-anchor="middle" fill="#ffcdd2" font-size="11.5">final_status = "technical_error"</text>
+  <text x="932" y="469" text-anchor="middle" fill="#ffebee" font-size="11">Halt loop immediately &amp; show error notice</text>
+
+  <!-- Dashed red error arrows from Actor & Critic -> Exit 3 -->
+  <path d="M 700 343 L 742 343 L 742 418 L 780 418" fill="none" stroke="#f44336" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrow-red)"/>
+  <path d="M 700 458 L 742 458 L 742 448 L 780 448" fill="none" stroke="#f44336" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrow-red)"/>
+  <text x="742" y="334" text-anchor="middle" fill="#ef9a9a" font-size="10.5">API / schema error</text>
+
+  <!-- ==================== EXECUTION LOGGER (BOTTOM RIGHT) ==================== -->
+  <rect x="445" y="732" width="310" height="72" rx="8" fill="#26282c" stroke="#9397a1" stroke-width="1.8"/>
+  <text x="600" y="757" text-anchor="middle" fill="#dfe1e5" font-size="14" font-weight="700">ExecutionLogger (logger.py)</text>
+  <text x="600" y="776" text-anchor="middle" fill="#9397a1" font-size="12">Appends QuestionRunLog + AttemptLogs</text>
+  <text x="600" y="794" text-anchor="middle" fill="#9dc0ff" font-size="11.5">logs/execution_log.json</text>
+
+  <!-- All 3 Exits log to ExecutionLogger -->
+  <path d="M 365 768 L 445 768" fill="none" stroke="#9aa0aa" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 932 706 L 932 768 L 755 768" fill="none" stroke="#9aa0aa" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 932 480 L 932 548 L 1098 548 L 1098 784 L 755 784" fill="none" stroke="#9aa0aa" stroke-width="1.4" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+
+  <!-- Return path from Exits back to Gradio UI -->
+  <path d="M 1085 645 L 1105 645 L 1105 131 L 700 131" fill="none" stroke="#4a85f6" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+  <text x="905" y="122" text-anchor="middle" fill="#9dc0ff" font-size="11.5">Final response displayed to user (all exits)</text>
+</svg>
