@@ -59,7 +59,8 @@ def chat(message, history):
 if __name__ == "__main__":
     gr.ChatInterface(
         chat,
-        title="Digital Twin",
-        description="Talk to my AI twin about my career",
-        chatbot=gr.Chatbot(show_label=False),
+        title="Omri's digital career chatbot",
+        description="Ask about Omri Gal's education, software engineering experience, projects, and background.",
+        chatbot=gr.Chatbot(show_label=False, scale=1),
+        fill_height=True,
     ).launch(css=CSS, js=JS, theme=gr.themes.Base())
