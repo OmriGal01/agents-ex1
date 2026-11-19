@@ -4,16 +4,14 @@ from evaluator import Evaluator
 from logger import ExecutionLogger, QuestionRunLog
 
 TECHNICAL_ERROR_MESSAGE = (
-    "A technical error occurred while processing the request. Please try again. / "
-    "אירעה שגיאה טכנית בעת עיבוד הבקשה. אנא נסו שוב."
+    "A technical error occurred while processing the request. Please try again."
 )
 
 
 def format_max_attempts_message(max_attempts: int) -> str:
     return (
         f"An approved response could not be generated within the maximum allowed "
-        f"attempts ({max_attempts}). / "
-        f"לא התקבלה תשובה מאושרת במסגרת מגבלת הניסיונות ({max_attempts})."
+        f"attempts ({max_attempts})."
     )
 
 
